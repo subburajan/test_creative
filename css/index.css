@@ -1,0 +1,165 @@
+
+.link {
+	font-size: 120%;
+	line-height: 3em;
+	margin-right: 100px;
+	cursor: pointer
+}
+
+.navbar > div, .navbar a {
+	margin-left: 10px;
+	color: #FFF;
+}
+
+.content {
+	margin-top: 70px;
+}
+
+.sub-title {
+	margin: 0px;
+	padding: 10px;
+	text-align: center;
+	border-bottom: 1px solid #AEAEAE;
+	background-color: #EEE;
+}
+
+.components {
+	border: 1px solid #AEAEAE;
+	background-color: #FFF;
+	min-height: 320px;
+	margin-left: 20px;
+}
+
+.box {
+	border: 1px solid #AEAEAE;
+	background-color: #FFF;
+	min-height: 430px;
+	margin-right: 20px;
+}
+
+.list {
+	border: 1px solid #AEAEAE;
+	background-color: #FFF;
+	min-height: 60px;
+	margin-right: 20px;
+	margin-bottom: 10px;
+}
+
+.temp-name {
+	border: 1px solid #AEAEAE;
+	background-color: #FFF;
+	min-height: 60px;
+	margin-left: 20px;
+	margin-bottom: 10px;
+}
+
+.temp-cntr {
+	min-height: 500px;
+	background-color: #EEE;
+	border: 1px solid #AEAEAE;
+
+}
+
+.temp_300_250 {
+	margin: 40px 25%;
+	width: 300px;
+	height: 250px;
+	background-color: #AEAEAE;
+	position: relative;
+}
+
+
+#components {
+	padding: 13px;
+}
+
+.comp-added {
+	position: absolute !important;
+}
+
+.component {
+	background-color: #EEE;
+	padding: 10px;
+	border: 1px solid #AEAEAE;
+	cursor: pointer;
+	width: 140px;
+	display: inline-block;
+	overflow: hidden;
+}
+
+.hori-divider {
+	height: 20px;
+	background: transparent;
+}
+
+.comp-sel {
+	box-shadow: 1px 1px 1px 1px #000;
+}
+
+.component img {
+	width: 100%;
+}
+
+.comp-img {
+	height: 121px;
+}
+
+.comp-button  {
+	text-align: center;
+	height: 40px;
+}
+
+.objects-cntrl {
+	text-align: center;
+}
+
+.objects {
+	margin: 10px;
+	width: 80%;
+}
+
+
+.prop-label {
+	margin: 10px 0px 2px 0px;
+	text-align: right;
+}
+
+.prop-value {
+	margin: 2px 10px 2px 0px;
+}
+
+.styles {
+	margin-bottom: 10px	
+}
+
+.texts {
+	border-top: 1px solid #EEE;
+	margin-bottom: 10px;
+}
+
+.temp-name {
+	padding: 10px 5px 5px;	
+	margin-bottom: 30px;
+	background-color: #EEE;
+}
+
+.temp-name input {
+	height: 34px;
+	margin-bottom: 10px;
+}
+
+.temp-name span {
+	width: 90%;
+	display: inline-block;
+	margin: 0px 10px 5px;
+}
+
+
+.delete-object {
+	text-align: left;
+	line-height: 50px;
+	font-size: 120%;
+	padding-right: 50px;
+	text-decoration: underline;
+	cursor: pointer
+}

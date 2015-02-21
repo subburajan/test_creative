@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Creative Test</title>
+
+	<link href='/bower_components/bootstrap/dist/css/bootstrap.min.css' rel="stylesheet">
+	<link href='/bower_components/jquery-ui/themes/smoothness/jquery-ui.min.css'  rel="stylesheet">
+	<link href="/css/index.css" rel="stylesheet">
+	
+	<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="/bower_components/jquery-ui/jquery-ui.min.js"></script>
+	<script src="/bower_components/underscore/underscore-min.js"></script>
+
+  </head>
+  <body ng-app="app">
+  	
+  	<script src="/bower_components/angular/angular.js"></script>
+  	<script src="/js/index.js"></script>
+	<script src="/js/ObjectFactory.js"></script>
+	<script src="/js/PropertiesController.js"></script>
+	<script src="/js/StorageController.js"></script>
+	<script src="/js/CommonService.js"></script>
+	<script src="/js/PreviewService.js"></script>
+		
+  	<script src="/bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+	
+<div ng-controller="CreativeCntrl">
+
+
+ 	<div class="navbar navbar-inverse navbar-fixed-top"
+ 		role="navigation" data-spy="affix" data-offset-top="200">
+      <div class="title pull-left">
+      	<h4>Creative | <a href='/'>Create Template </a></h4>
+      </div>
+      
+      <div class="pull-right">
+      	<a href="/add-feed.html?name={{ templateName }}" class='link'>Add Product Feed</a>
+      	<a ng-click='preview()' class='link'>Preview</a>
+	   	<a href='/list.html' class='link'>All Templates</a>
+      </div>
+     </div>
+
+	 
+ 	<div class="row" >
+ 	  <div class="content">
+ 		
+ 		<div class="col-md-2">
+ 		
+ 		 	<div class='temp-name' ng-controller='StorageCntrl'>
+ 				 <span>
+ 				 	<input type="text" class='form-control' placeholder="Name" ng-model="templateName">
+ 				 </span>
+ 				 <span>
+ 				 	<button type="button" ng-disabled="saveButtName != 'Save'"
+ 				 		class="btn btn-primary btn-block" ng-click="save()">
+ 				 		{{ saveButtName }}
+ 				 	</button>
+ 				 </span>
+ 			</div>
+ 		
+ 			<div class='components'>
+ 				<h4 class='sub-title'>Components</h4>
+ 				
+ 				<div id="components">
+ 				 	<div class='component comp-img comp-drag' data-type='image'>
+	 					<img id='image' src="images/image.png">
+	 				</div>
+	 			
+	 				<div class="hori-divider"></div>
+	 				
+	 				<div class='component comp-text comp-drag' data-type='text'>
+	 					<span id='prefix'></span>
+	 					<span id='text'>Text</span>
+	 					<span id='suffix'></span>
+	 				</div>
+					
+					<div class="hori-divider"></div>
+	 				
+	 				<div class='component comp-button comp-drag' data-type='button'>
+	 					<span id='button'>Button</span>
+	 				</div>
+ 				</div>
+ 				
+ 			</div>
+ 		</div>
+ 		
+ 		<div class='col-md-6'>
+ 			<div class='temp-cntr'>
+ 				
+ 				<div id="template" class='temp_300_250'>
+ 				
+ 				</div>
+ 				
+ 			</div>
+ 		</div>
+ 	
+ 		<div class='col-md-4'>
+ 		
+ 			<div class='list objects-cntrl'>
+ 				<div class='row'>
+ 					<div class='col-md-9'>
+ 					 	<select class="form-control objects" ng-options="e.id as e.name for e in objects" ng-model='selected'
+		 				 	name="Object" ng-change="changeObject()">
+		 				 	<option value="">Select Object</option>	
+		 				</select>
+ 					</div>
+ 					
+ 					<div class='col-md-3'>
+ 						<a ng-click='deleteCurrent()' ng-show="current != null && current.type != 'container'"
+ 							class='delete-object'>Delete</a>
+ 					</div>
+ 				</div>
+ 			</div>
+ 			 		
+ 			<div class='box' >
+ 				 <h4 class='sub-title'>Properties</h4>
+ 				 
+ 				 <div id="properties" ng-controller='PropertiesCntrl' ng-show="current" style='padding: 20px 0px'>
+ 				 					 	
+ 				 	<div class='row'>
+			 			<div class='col-md-5'>
+			 				<div class='prop-label'>Name</div>
+			 			</div>
+			 			<div class='col-md-7'>
+			 				<div class='prop-value'>
+			 					<input type='text' class='form-control' ng-model='current.name'>
+			 				</div>
+			 			</div>
+			 		</div>
+ 				 		
+ 				 	<div class="styles" ng-show="current.props">
+ 				 		<h4 class='text-center'>Styles</h4>
+ 				 		<div class='row' ng-repeat="prop in current.props">
+ 				 			<div class='col-md-5'>
+ 				 				<div class='prop-label'>{{ prop.name }}</div>
+ 				 			</div>
+ 				 			<div class='col-md-7'>
+ 				 				<div class='prop-value'>
+ 				 					<input type='text' class='form-control' ng-model='prop.value'>
+ 				 				</div>
+ 				 			</div>
+ 				 		</div>
+ 				 	</div>
+
+ 				 	<div class="texts" ng-show="current.texts.length > 0">
+ 				 		<h4 class='text-center'>Texts</h4>
+ 				 		<div class='row' ng-repeat="prop in current.texts">
+ 				 			<div class='col-md-5'>
+ 				 				<div class='prop-label'>{{ prop.name }}</div>
+ 				 			</div>
+ 				 			<div class='col-md-7'>
+ 				 				<div class='prop-value'>
+ 				 					<input type='text' class='form-control' ng-model='prop.value'>
+ 				 				</div>
+ 				 			</div>
+ 				 		</div>
+ 				 	</div>
+ 				 
+ 				 </div>
+ 			</div>
+ 		</div>
+ 	  </div>
+ 	</div>
+
+</div>
+	 
+ 
+  </body>
+  
+</html>
+  

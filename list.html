@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Creative Test</title>
+
+	<link href='/bower_components/bootstrap/dist/css/bootstrap.min.css' rel="stylesheet">
+	<link href='/bower_components/jquery-ui/themes/smoothness/jquery-ui.min.css'  rel="stylesheet">
+	<link href="/css/index.css" rel="stylesheet">
+	
+	<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="/bower_components/jquery-ui/jquery-ui.min.js"></script>
+	<script src="/bower_components/underscore/underscore-min.js"></script>
+	
+  </head>
+  <body ng-app="app">
+  	
+  	<script src="/bower_components/angular/angular.js"></script>
+  	<script src="/js/listController.js"></script>
+	<script src="/js/CommonService.js"></script>
+	<script src="/js/PreviewService.js"></script>
+	<script src="/js/test.js"></script>
+	  	
+  	<script src="/bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+	
+<div ng-controller="ListCntrl">
+
+
+ 	<div class="navbar navbar-inverse navbar-fixed-top"
+ 		role="navigation" data-spy="affix" data-offset-top="200">
+ 		
+	    <div class="title pull-left">
+	    	<h4>Creative | All Templates </h4>
+	    </div>
+      
+      	<div class="pull-right">
+			<a ng-click='loadTest()' class='link'>Load Test</a>
+		</div>
+		
+    </div>
+	 
+ 	<div class="row content">
+	
+		<div class='col-md-3'></div>
+		
+		<div class='col-md-6'>
+ 			<div class='box' >
+ 				 <h4 class='sub-title'>Templates</h4>
+
+					<div class="col-md-12" ng-repeat="name in list"  style='padding: 10px 10px; border-bottom: 1px solid #EEE'>
+						
+						<div class='col-md-6'>
+							<a href='/?name={{ name }}'>{{ name }}</a>
+						</div>
+						
+						<div class='col-md-2'>
+							<a ng-click='preview(name)' style='cursor:pointer'>Preview</a>
+						</div>
+						<div class='col-md-2'>
+							<a href='/add-feed.html?name={{ name }}'>Add Feed</a>
+						</div>
+						<div class='col-md-2'>
+							<a ng-click='deleteTemplate(name)' style='cursor:pointer'>Delete</a>
+						</div>
+					</div>
+
+ 			</div>
+ 		</div>
+
+		<div class='col-md-3'></div>
+ 	</div>
+
+</div>
+	 
+ 
+  </body>
+  
+</html>
+  
